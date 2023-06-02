@@ -9,5 +9,5 @@ app.use(express.urlencoded());
 
 app.use("/", router);
 app.use('/allbooks/', router)
-
+app.use('/books', router)
 export default app;
