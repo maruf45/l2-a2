@@ -11,4 +11,5 @@ app.use("/", router);
 app.use("/allbooks/", router);
 app.use("/books", router);
 app.use("/checkFeatured", router);
+app.use("/checkPrice", router);
 export default app;

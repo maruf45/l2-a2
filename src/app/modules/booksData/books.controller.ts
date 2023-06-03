@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { checkFeatured, getGenreAndPublisherName, getSpecificGenre } from "./books.service";
+import {
+  checkFeatured,
+  getGenreAndPublisherName,
+  getSpecificGenre,
+  integerBookPrice,
+} from "./books.service";
 
 export const allBooks = async (req: Request, res: Response) => {
   const genreName: string = req.params.genre;
@@ -12,9 +17,9 @@ export const allBooks = async (req: Request, res: Response) => {
 };
 
 export const getGenreAndPublisher = async (req: Request, res: Response) => {
-  const {genre, publisherName} = req.query as any;
+  const { genre, publisherName } = req.query as any;
   console.log(genre, publisherName);
-  
+
   const books = await getGenreAndPublisherName(genre, publisherName);
   res.status(200).json({
     status: "success",
@@ -22,11 +27,18 @@ export const getGenreAndPublisher = async (req: Request, res: Response) => {
   });
 };
 
-
-export const  getCheckFeatured = async(req: Request, res: Response) => {
+export const getCheckFeatured = async (req: Request, res: Response) => {
   const books = await checkFeatured();
   res.status(200).json({
-    status: 'success',
-    data: books
-  })
-}
+    status: "success",
+    data: books,
+  });
+};
+
+export const getIntegerBookPrice = async (req: Request, res: Response) => {
+  const books = await integerBookPrice();
+  res.status(200).json({
+    status: "success",
+    data: books,
+  });
+};
