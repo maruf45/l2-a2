@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.urlencoded());
 
 app.use("/", router);
-app.use('/allbooks/', router)
-app.use('/books', router)
+app.use("/allbooks/", router);
+app.use("/books", router);
+app.use("/checkFeatured", router);
 export default app;

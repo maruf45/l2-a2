@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { getGenreAndPublisherName, getSpecificGenre } from "./books.service";
+import { checkFeatured, getGenreAndPublisherName, getSpecificGenre } from "./books.service";
 
 export const allBooks = async (req: Request, res: Response) => {
   const genreName: string = req.params.genre;
@@ -21,3 +21,12 @@ export const getGenreAndPublisher = async (req: Request, res: Response) => {
     data: books,
   });
 };
+
+
+export const  getCheckFeatured = async(req: Request, res: Response) => {
+  const books = await checkFeatured();
+  res.status(200).json({
+    status: 'success',
+    data: books
+  })
+}
